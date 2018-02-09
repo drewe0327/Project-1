@@ -39,7 +39,10 @@ def get_players(players, team_list):
             player_list.append(player)
             """if the index is less than the number of teams
             then increment it by one. Otherwise reset the index"""
-            index += 1 if index < roster else 0
+            if index < roster:
+                index += 1
+            else:
+                index = 0
     #returns list with players on their appointed teams
     return player_list
 
