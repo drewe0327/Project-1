@@ -15,15 +15,15 @@ def players_by_experience(players):
             no_exp_players.append(player) if player["Soccer Experience"] == "NO" else exp_players.append(player)
     return no_exp_players, exp_players
 
-def get_players(players, team_list):
+def get_players(players, roster_list):
     index = 0
     """Sorting players inexperienced and
     experienced players into groups"""
     sorted_players = players_by_experience(players)
     #list of players and teams to return
-    player_list, teams =[],[]
+    name_list, teams =[],[]
     #team dictionary
-    for key, value in team_list.items():
+    for key, value in roster_list.items():
         teams.append(key)
     #loops through the groups
     for group in sorted_players:
@@ -33,20 +33,20 @@ def get_players(players, team_list):
             # assign player to a team using index value
             player['Team']= teams[index]
             # add playey to the list
-            player_list.append(player)
+            name_list.append(player)
             """if the index is less than the number of teams
             then increment it by one. Otherwise reset the index"""
             index += 1 if index < roster else -2
 
         #returns list with players on their appointed teams
-    return player_list
+    return name_list
 
 #generates the teams
-def get_teams(team_list, player_list):
-    for player in player_list:
+def get_teams(roster_list, name_list):
+    for player in name_list:
         team = player['Team']
-        team_list[team].append(player) if team in team_list else 0
-    return team_list
+        roster_list[team].append(player) if team in roster_list else 0
+    return roster_list
 
 #writes the team.txt file
 def teams_text(player_list):
@@ -69,13 +69,13 @@ if __name__ == "__main__":
     imported_players = get_csv_file('soccer_players.csv')
 
     # team names
-    team_list = {'Sharks': [],'Dragons': [],'Raptors': []}
+    roster_list = {'Sharks': [],'Dragons': [],'Raptors': []}
 
     # assign players to teams
-    get_players = get_players(imported_players, team_list)
+    get_players = get_players(imported_players, roster_list)
 
     # populate team lists
-    teams = get_teams(team_list, get_players)
+    teams = get_teams(roster_list, get_players)
 
     # output file
     teams_text(teams)
