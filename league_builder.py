@@ -48,9 +48,7 @@ def get_players(players, team_list):
 def get_teams(team_list, player_list):
     for player in player_list:
         team = player['Team']
-        if team in team_list:
-            team_list[team].append(player)
-
+        team_list[team].append(player) if team in team_list else 0
     return team_list
 
 #writes the team.txt file
