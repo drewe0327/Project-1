@@ -49,7 +49,7 @@ def get_teams(roster_list, name_list):
     return roster_list
 
 #writes the team.txt file
-def teams_text(player_list):
+def teams_text(name_list):
     file = open("teams.txt", 'a')
     #loops through teams
     for team, players in teams.items():
