@@ -20,16 +20,13 @@ def get_players(players, team_list):
     """Sorting players inexperienced and
     experienced players into groups"""
     sorted_players = players_by_experience(players)
-    #list of players to rerturn
-    player_list =[]
-    #list of teams
-    teams =[]
+    #list of players and teams to return
+    player_list, teams =[],[]
     #team dictionary
     for key, value in team_list.items():
         teams.append(key)
     #loops through the groups
     for group in sorted_players:
-
         roster =len(teams)-1
         #loops through players in the group
         for player in group:
