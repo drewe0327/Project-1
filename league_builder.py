@@ -41,7 +41,7 @@ def get_players(players, team_list):
             then increment it by one. Otherwise reset the index"""
             index += 1 if index < roster else -2
 
-    #returns list with players on their appointed teams
+        #returns list with players on their appointed teams
     return player_list
 
 #generates the teams
@@ -72,11 +72,7 @@ if __name__ == "__main__":
     imported_players = get_csv_file('soccer_players.csv')
 
     # team names
-    team_list = {
-        'Sharks': [],
-        'Dragons': [],
-        'Raptors': []
-    }
+    team_list = {'Sharks': [],'Dragons': [],'Raptors': []}
 
     # assign players to teams
     get_players = get_players(imported_players, team_list)
